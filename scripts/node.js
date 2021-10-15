@@ -11,6 +11,14 @@ async function main (input) {
     console.log('[TWITTER]', 'Log:', msg);
   });
 
+  twitter.on('warning', function (msg) {
+    console.warn('[TWITTER]', 'Warning:', msg);
+  });
+
+  twitter.on('error', function (msg) {
+    console.error('[TWITTER]', 'Error:', msg);
+  });
+
   twitter.on('message', function (msg) {
     console.log('[TWITTER]', 'Fabric Message:', msg);
   });
