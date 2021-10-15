@@ -1,0 +1,27 @@
+{
+  "name": "@fabric/twitter",
+  "version": "0.1.0-dev",
+  "description": "Twitter service for Fabric.",
+  "main": "services/twitter.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FabricLabs/fabric-twitter.git"
+  },
+  "keywords": [
+    "fabric",
+    "twitter"
+  ],
+  "author": "Fabric Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FabricLabs/fabric-twitter/issues"
+  },
+  "homepage": "https://github.com/FabricLabs/fabric-twitter#readme",
+  "dependencies": {
+    "@fabric/core": "martindale/fabric#message-relay",
+    "twitter": "^1.7.1"
+  }
+}

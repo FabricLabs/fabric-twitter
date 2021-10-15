@@ -1,0 +1,11 @@
+{
+  "name": "@fabric/twitter",
+  "consumer": {
+    "key": "place your consumer key here",
+    "secret": "place your consumer secret here"
+  },
+  "token": {
+    "key": "place your token key here",
+    "secret": "place your token secret here"
+  }
+}
