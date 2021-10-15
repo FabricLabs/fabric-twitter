@@ -43,10 +43,16 @@ class Twitter extends Service {
    * Establish connection to Twitter.
    * @return {Twitter} Connected instance of Twitter.
    */
-  connect () {
-    this.stream = this.twitter.stream('statuses/filter', {
-      track: this._state.keywords.join(',')
-    });
+  async connect () {
+    this.emit('log', 'Connecting to stream...');
+
+    try {
+      this.stream = this.twitter.stream('statuses/filter', {
+        track: this._state.keywords.join(',')
+      });
+    } catch (exception) {
+      return this.emit('error', `Exception creating stream: ${exception}`);
+    }
 
     // TODO: bind to event handler on this class
     this.stream.on('data', this._handleStreamEvent.bind(this));
@@ -54,11 +60,16 @@ class Twitter extends Service {
       console.log('stream error:', err);
     });
 
+    this.emit('log', `Stream connected!  Monitoring: ${JSON.stringify({
+      keywords: this.settings.keywords,
+      targets: this.settings.targets
+    }, null, '  ')}`);
+
     return this;
   }
 
-  start () {
-    this.connect();
+  async start () {
+    await this.connect();
     return this;
   }
 

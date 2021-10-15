@@ -6,6 +6,15 @@ const settings = merge({}, require('../settings/default'), require('../settings/
 
 async function main (input) {
   const twitter = new Twitter(input);
+
+  twitter.on('log', function (msg) {
+    console.log('[TWITTER]', 'Log:', msg);
+  });
+
+  twitter.on('message', function (msg) {
+    console.log('[TWITTER]', 'Fabric Message:', msg);
+  });
+
   await twitter.start();
 }
 
